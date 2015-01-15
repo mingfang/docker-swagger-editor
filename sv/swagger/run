@@ -1,0 +1,8 @@
+#!/bin/sh
+
+#sv start socklog-unix || exit 1
+
+cd /swagger-editor
+
+exec 2>&1
+exec grunt connect:dist
