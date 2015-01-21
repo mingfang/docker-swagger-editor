@@ -21,11 +21,8 @@ ENV NODE_PATH /usr/local/lib/node_modules
 RUN npm -g install bower
 RUN npm install -g grunt-cli bower
 
-RUN git clone --depth 1 https://github.com/swagger-api/swagger-editor.git
-#Workaround this issue, https://github.com/swagger-api/swagger-editor/issues/296
-RUN cd /swagger-editor && \
-    sed -i "s|~0.7.6|0.7.6|" bower.json && \
-    sed -i "s|~1.1.0|1.0.4|" bower.json 
+RUN git clone https://github.com/swagger-api/swagger-editor.git
+RUN cd /swagger-editor && git checkout tags/v2.8.2
 RUN cd /swagger-editor && \
     npm install && \
     bower install --allow-root && \
